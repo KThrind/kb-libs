@@ -23,7 +23,7 @@ class libs {
     }
 
     public static function dynamicJs($name, $ndd, $path) {
-        self::define();
+        self::define($ndd, $path);
         $dynamicJS = json_decode(file_get_contents('http://'.DL_NDD.DL_PATH.'public/rev-manifest.json'));
         return "<script src='http://".DL_NDD.DL_PATH."public/js/".$dynamicJS->{$name.'.js'}."'></script>";
     }
