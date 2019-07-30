@@ -1,0 +1,23 @@
+{
+    "name": "karteblanche/kb-libs",
+    "type": "library",
+    "description": "",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Corentin Gouloumy",
+            "email": "corentin@karteblanche.fr",
+			"homepage": "https://karteblanche.fr/"
+        }
+    ],
+    "minimum-stability": "stable",
+    "prefer-stable": "true",
+    "require": {
+		"php": ">=5.3.2"
+	},
+    "autoload": {
+		"psr-4" : {
+			"kb-libs\\": "/src" 
+		}
+    }
+}
