@@ -1,9 +1,9 @@
 <?php
 
-namespace kb-dyanmiclibs;
+namespace karteblanche\libs;
 
 /* ________________________________________________CLASS */
-/* \kb-dynamiclibs\libs::_______________________________ */
+/* \karteblanche\libs\libs::____________________________ */
 /* _____________________________________________________ */
 
 class libs {
