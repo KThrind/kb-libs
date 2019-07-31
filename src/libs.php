@@ -16,7 +16,7 @@ class libs {
         return "<link rel='stylesheet' href='$url'>";
     }
 	
-    public static function dynamicCss($name, $ndd, $path, $security) {
+    public static function dynamicCss($name, $ndd, $path, $security = null) {
         self::define($ndd, $path);
         $dynamicCSS = json_decode(file_get_contents('http://'.DL_NDD.DL_PATH.'public/rev-manifest.json', false, $security));
         return "<link rel='stylesheet' href='http://".DL_NDD.DL_PATH."public/css/".$dynamicCSS->{$name.'.css'}."'>";
@@ -26,7 +26,7 @@ class libs {
         return "<script src='$url'></script>";
     }
 
-    public static function dynamicJs($name, $ndd, $path, $security) {
+    public static function dynamicJs($name, $ndd, $path, $security = null) {
         self::define();
         $dynamicJS = json_decode(file_get_contents('http://'.DL_NDD.DL_PATH.'public/rev-manifest.json', false, $security));
         return "<script src='http://".DL_NDD.DL_PATH."public/js/".$dynamicJS->{$name.'.js'}."'></script>";
