@@ -1,9 +1,9 @@
 <?php
 
-namespace karteblanche\libs;
+namespace kb-dyanmiclibs;
 
 /* ________________________________________________CLASS */
-/* \karteblanche\libs\libs::____________________________ */
+/* \kb-dynamiclibs\libs::_______________________________ */
 /* _____________________________________________________ */
 
 class libs {
@@ -11,10 +11,14 @@ class libs {
         @DEFINE('DL_NDD', $ndd);
         @DEFINE('DL_PATH', $path);
     }
-
-    public static function dynamicCss($name, $ndd, $path) {
+	
+    public static function css($url) {
+        return "<link rel='stylesheet' href='$url'>";
+    }
+	
+    public static function dynamicCss($name, $ndd, $path, $security) {
         self::define($ndd, $path);
-        $dynamicCSS = json_decode(file_get_contents('http://'.DL_NDD.DL_PATH.'public/rev-manifest.json'));
+        $dynamicCSS = json_decode(file_get_contents('http://'.DL_NDD.DL_PATH.'public/rev-manifest.json', false, $security));
         return "<link rel='stylesheet' href='http://".DL_NDD.DL_PATH."public/css/".$dynamicCSS->{$name.'.css'}."'>";
     }
     
@@ -22,9 +26,9 @@ class libs {
         return "<script src='$url'></script>";
     }
 
-    public static function dynamicJs($name, $ndd, $path) {
-        self::define($ndd, $path);
-        $dynamicJS = json_decode(file_get_contents('http://'.DL_NDD.DL_PATH.'public/rev-manifest.json'));
+    public static function dynamicJs($name, $ndd, $path, $security) {
+        self::define();
+        $dynamicJS = json_decode(file_get_contents('http://'.DL_NDD.DL_PATH.'public/rev-manifest.json', false, $security));
         return "<script src='http://".DL_NDD.DL_PATH."public/js/".$dynamicJS->{$name.'.js'}."'></script>";
     }
 
