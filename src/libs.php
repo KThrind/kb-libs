@@ -20,7 +20,7 @@ class libs {
     public static function dynamicCss($name, $protocol, $ndd, $path, $security = null) {
         self::define($protocol, $ndd, $path);
         $dynamicCSS = json_decode(file_get_contents(DL_PROTOCOL.DL_NDD.DL_PATH.'public/rev-manifest.json', false, $security));
-        return "<link rel='stylesheet' href='".DL_PROTOCOL.DL_NDD.DL_PATH."public/css/".$dynamicCSS->{$name.'.css'}."'>";
+        return "<link rel='stylesheet' href='".DL_PROTOCOL.DL_NDD.DL_PATH."public/dynCss/".$dynamicCSS->{$name.'.css'}."'>";
     }
     
     public static function js($url) {
@@ -30,7 +30,7 @@ class libs {
     public static function dynamicJs($name, $protocol, $ndd, $path, $security = null) {
         self::define($protocol, $ndd, $path);
         $dynamicJS = json_decode(file_get_contents(DL_PROTOCOL.DL_NDD.DL_PATH.'public/rev-manifest.json', false, $security));
-        return "<script src='".DL_PROTOCOL.DL_NDD.DL_PATH."public/js/".$dynamicJS->{$name.'.js'}."'></script>";
+        return "<script src='".DL_PROTOCOL.DL_NDD.DL_PATH."public/dynJs/".$dynamicJS->{$name.'.js'}."'></script>";
     }
 
 }
