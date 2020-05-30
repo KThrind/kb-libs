@@ -6,21 +6,14 @@ namespace karteblanche\libs;
 /* \karteblanche\libs\libs::____________________________ */
 /* _____________________________________________________ */
 
-class libs {
-    public static function define($protocol, $ndd, $path) {
-        @DEFINE('DL_PROTOCOL', $protocol);
-		@DEFINE('DL_NDD', $ndd);
-        @DEFINE('DL_PATH', $path);
-    }
-	
+class libs {	
     public static function css($url) {
         return "<link rel='stylesheet' href='$url'>";
     }
 	
     public static function dynamicCss($name, $protocol, $ndd, $path, $security = null) {
-        self::define($protocol, $ndd, $path);
-        $dynamicCSS = json_decode(file_get_contents(DL_PROTOCOL.DL_NDD.DL_PATH.'public/rev-manifest.json', false, $security));
-        return "<link rel='stylesheet' href='".DL_PROTOCOL.DL_NDD.DL_PATH."public/dynCss/".$dynamicCSS->{$name.'.css'}."'>";
+        $dynamicCSS = json_decode(file_get_contents($protocol.$ndd.$path.'public/rev-manifest.json', false, $security));
+        return "<link rel='stylesheet' href='".$protocol.$ndd.$path."public/dynCss/".$dynamicCSS->{$name.'.css'}."'>";
     }
     
     public static function js($url) {
@@ -28,9 +21,8 @@ class libs {
     }
 
     public static function dynamicJs($name, $protocol, $ndd, $path, $security = null) {
-        self::define($protocol, $ndd, $path);
-        $dynamicJS = json_decode(file_get_contents(DL_PROTOCOL.DL_NDD.DL_PATH.'public/rev-manifest.json', false, $security));
-        return "<script src='".DL_PROTOCOL.DL_NDD.DL_PATH."public/dynJs/".$dynamicJS->{$name.'.js'}."'></script>";
+        $dynamicJS = json_decode(file_get_contents($protocol.$ndd.$path.'public/rev-manifest.json', false, $security));
+        return "<script src='".$protocol.$ndd.$path."public/dynJs/".$dynamicJS->{$name.'.js'}."'></script>";
     }
 
 }
